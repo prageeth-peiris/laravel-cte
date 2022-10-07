@@ -44,7 +44,8 @@ trait CompilesExpressions
 
             $cycle = $this->compileCycle($query, $expression);
 
-            $statements[] = $this->wrapTable($expression['name']).' '.$columns.'as '.$materialized.'('.$expression['query'].")$cycle";
+           // $statements[] = $this->wrapTable($expression['name']).' '.$columns.'as '.$materialized.'('.$expression['query'].")$cycle";
+             $statements[] = $materialized.'('.$expression['query'].")$cycle" . ' as '  .  $this->wrapTable($expression['name']).' '.$columns ;  //patches
         }
 
         return 'with '.$recursive.implode(', ', $statements);
